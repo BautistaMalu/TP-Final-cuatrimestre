@@ -27,10 +27,10 @@ public class PlayerScript : MonoBehaviour
 
         transform.Translate(movementspeed, 0, 0);
 
-        while (contador < 3 ) //poner un ui text q cambie de color
-        {
+        //while (contador < 3 ) poner un ui text q cambie de color
+        //{
    
-        }
+        //}
     }
 
     void OnCollisionEnter(Collision col)
