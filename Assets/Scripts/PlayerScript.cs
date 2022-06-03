@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     public float movementspeed;
     int contador = 0;
+     public Material mat;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,9 +27,9 @@ public class PlayerScript : MonoBehaviour
 
         transform.Translate(movementspeed, 0, 0);
 
-        while (contador%2 == 1)
+        while (contador < 3 ) //poner un ui text q cambie de color
         {
-
+   
         }
     }
 
@@ -39,6 +40,8 @@ public class PlayerScript : MonoBehaviour
             transform.position = new Vector3(-1.45f, 7, -3);
 
             contador = 0;
+
+            
         }
 
         else if (col.gameObject.name == "ParedIzq")
@@ -48,6 +51,8 @@ public class PlayerScript : MonoBehaviour
             movementspeed = movementspeed + (-movementspeed*2);
 
             contador++;
+
+            mat.color = Color.blue;
         }
         else if (col.gameObject.name == "ParedDer")
         {
@@ -56,6 +61,8 @@ public class PlayerScript : MonoBehaviour
             movementspeed = movementspeed - (movementspeed * 2);
 
             contador++;
+
+            mat.color = Color.green;
         }
     }
 
