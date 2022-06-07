@@ -43,6 +43,14 @@ public class PlayerScript : MonoBehaviour
 
             
         }
+        if (col.gameObject.name == "Spikes(Clone)")
+        {
+            transform.position = new Vector3(-1.45f, 7, -3);
+
+            contador = 0;
+
+
+        }
 
         else if (col.gameObject.name == "ParedIzq")
         {
