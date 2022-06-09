@@ -6,6 +6,8 @@ public class InstantiatorIzq : MonoBehaviour
 {
     public GameObject Spikes;
     int cantidad = 1;
+    int maximo = 4;
+    GameObject clon;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,18 +17,21 @@ public class InstantiatorIzq : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-   
+        Destroy(clon);
     }
 
     void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.name == "Player")
         {
-            while (11 > cantidad)
+            while (cantidad < maximo)
             {
-                Instantiate(Spikes, Positionn(), Quaternion.identity);
+               clon = Instantiate(Spikes, Positionn(), Quaternion.identity);
                 cantidad++;
             }
+            maximo++;
+            cantidad = 1;
+
         }
     }
 

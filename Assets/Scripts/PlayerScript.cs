@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     public float movementspeed;
     int contador = 0;
-     public Material mat;
+    public Material mat;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,15 @@ public class PlayerScript : MonoBehaviour
 
             
         }
-        if (col.gameObject.name == "Spikes(Clone)")
+        if (col.gameObject.name == "SpikesIzq(Clone)")
+        {
+            transform.position = new Vector3(-1.45f, 7, -3);
+
+            contador = 0;
+
+
+        }
+        if (col.gameObject.name == "SpikesDer(Clone)")
         {
             transform.position = new Vector3(-1.45f, 7, -3);
 
@@ -54,16 +63,19 @@ public class PlayerScript : MonoBehaviour
 
         else if (col.gameObject.name == "ParedIzq")
         {
+
             transform.Translate(movementspeed, 0, 0);
 
-            movementspeed = movementspeed + (-movementspeed*2);
+            movementspeed = movementspeed + (-movementspeed * 2);
 
             contador++;
 
             mat.color = Color.blue;
+
         }
         else if (col.gameObject.name == "ParedDer")
         {
+
             transform.Translate(movementspeed, 0, 0);
 
             movementspeed = movementspeed - (movementspeed * 2);
@@ -71,6 +83,7 @@ public class PlayerScript : MonoBehaviour
             contador++;
 
             mat.color = Color.green;
+
         }
     }
 
