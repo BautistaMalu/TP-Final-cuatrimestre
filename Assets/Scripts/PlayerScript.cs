@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject SpikesDer;
     GameObject clon2;
     public Text contadortext;
+    public Text win;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +36,19 @@ public class PlayerScript : MonoBehaviour
 
         transform.Translate(movementspeed, 0, 0);
 
-        contadortext.enabled = false;
 
-        if (lifeandrestart.Life > 0)
+
+        if (contador > 0)
         {
-            contadortext.enabled = true;
             contadortext.text = ("Puntaje:" + contador.ToString());
 
         }
-        //while (contador < 3 ) poner un ui text q cambie de color
-        //{
 
-        //}
+        if (contador == 10)
+        {
+            contadortext.text = ("Ganaste");
+            gameObject.SetActive(false);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -93,7 +95,7 @@ public class PlayerScript : MonoBehaviour
             {
                 clon = Instantiate(SpikesDer, PositionDer(), Quaternion.identity);
                 cantidad++;
-                Destroy(clon, 3.7f);
+                Destroy(clon, 4.5f);
             }
 
             maximo++;
@@ -114,7 +116,7 @@ public class PlayerScript : MonoBehaviour
             {
                 clon2 = Instantiate(SpikesIzq, PositionIzq(), Quaternion.identity);
                 cantidad++;
-                Destroy(clon2, 3.7f);
+                Destroy(clon2, 4.5f);
             }
             cantidad = 1;
         }
