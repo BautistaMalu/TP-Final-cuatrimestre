@@ -17,16 +17,23 @@ public class PlayerScript : MonoBehaviour
     public GameObject SpikesDer;
     GameObject clon2;
     public Text contadortext;
-    public Text win;
+    public AudioClip Bonk;
+    AudioSource fuente;
+    Time time;
+    public Text TimeText;
+    float starttime;
     // Start is called before the first frame update
     void Start()
     {
+
         rb = GetComponent<Rigidbody>();
+        fuente = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        starttime = Time.timeSinceLevelLoad;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -49,6 +56,12 @@ public class PlayerScript : MonoBehaviour
             contadortext.text = ("Ganaste");
             gameObject.SetActive(false);
         }
+
+        if (lifeandrestart.Life == 100)
+        {
+            TimeText.text = ("Segundos:" + Mathf.Floor(starttime).ToString());
+        }
+
     }
 
     void OnCollisionEnter(Collision col)
@@ -100,6 +113,8 @@ public class PlayerScript : MonoBehaviour
 
             maximo++;
             cantidad = 1;
+            fuente.clip = Bonk;
+            fuente.Play();
         }
         else if (col.gameObject.name == "ParedDer")
         {
@@ -119,6 +134,9 @@ public class PlayerScript : MonoBehaviour
                 Destroy(clon2, 4.5f);
             }
             cantidad = 1;
+
+            fuente.clip = Bonk;
+            fuente.Play();
         }
     }
     Vector3 PositionDer()

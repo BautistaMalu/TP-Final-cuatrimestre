@@ -9,6 +9,7 @@ public class lifeandrestart : MonoBehaviour
     public static int Life = 100;
     public GameObject player;
     public Text txt;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,7 +33,6 @@ public class lifeandrestart : MonoBehaviour
             txt.enabled = true;
             player.SetActive(false);
             txt.text = ("Toca R para reiniciar");
-
         }
         
     }
