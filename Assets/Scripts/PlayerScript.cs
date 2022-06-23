@@ -100,9 +100,10 @@ public class PlayerScript : MonoBehaviour
 
             movementspeed = movementspeed + (-movementspeed * 2);
 
-            contador++;
 
-            mat.color = Color.blue;
+            transform.eulerAngles = new Vector3(180, 0, 0);
+
+            contador++;
 
             while (cantidad <= maximo)
             {
@@ -123,9 +124,10 @@ public class PlayerScript : MonoBehaviour
 
             movementspeed = movementspeed - (movementspeed * 2);
 
-            contador++;
+            transform.eulerAngles = new Vector3 (-180, 0, 0);
 
-            mat.color = Color.green;
+
+            contador++;
 
             while (cantidad <= maximo)
             {
