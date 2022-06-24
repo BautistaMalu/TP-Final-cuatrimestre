@@ -9,10 +9,9 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     public float movementspeed;
     int contador = 0;
-    public Material mat;
     public GameObject SpikesIzq;
     int cantidad = 1;
-    int maximo = 4;
+    int maximo = 2;
     GameObject clon;
     public GameObject SpikesDer;
     GameObject clon2;
@@ -41,7 +40,7 @@ public class PlayerScript : MonoBehaviour
 
         }
 
-        transform.Translate(movementspeed, 0, 0);
+        transform.Translate(0, movementspeed, 0);
 
 
 
@@ -96,18 +95,17 @@ public class PlayerScript : MonoBehaviour
         else if (col.gameObject.name == "ParedIzq")
         {
 
-            transform.Translate(movementspeed, 0, 0);
+            transform.Translate(0, movementspeed, 0);
 
-            movementspeed = movementspeed + (-movementspeed * 2);
+            movementspeed = movementspeed + (movementspeed * -2);
 
-
-            transform.eulerAngles = new Vector3(180, 0, 0);
+            //transform.eulerAngles = new Vector3(180, 0, 0);
 
             contador++;
 
             while (cantidad <= maximo)
             {
-                clon = Instantiate(SpikesDer, PositionDer(), Quaternion.identity);
+                clon = Instantiate(SpikesDer, PositionDer(), Quaternion(90,90,0);
                 cantidad++;
                 Destroy(clon, 4.5f);
             }
@@ -120,11 +118,12 @@ public class PlayerScript : MonoBehaviour
         else if (col.gameObject.name == "ParedDer")
         {
 
-            transform.Translate(movementspeed, 0, 0);
+            transform.Translate(0, movementspeed, 0);
 
             movementspeed = movementspeed - (movementspeed * 2);
 
-            transform.eulerAngles = new Vector3 (-180, 0, 0);
+
+            //transform.eulerAngles = new Vector3 (-180, 0, 0);
 
 
             contador++;
@@ -144,8 +143,8 @@ public class PlayerScript : MonoBehaviour
     Vector3 PositionDer()
     {
         float x, y, z;
-        x = 17;
-        y = UnityEngine.Random.Range(-17.3f, 33.1f);
+        x = 19.3f;
+        y = UnityEngine.Random.Range(-17.3f, 29.3f);
         z = -2.7f;
 
         return new Vector3(x, y, z);
@@ -153,11 +152,22 @@ public class PlayerScript : MonoBehaviour
     Vector3 PositionIzq()
     {
         float x, y, z;
-        x = -17.7f;
-        y = UnityEngine.Random.Range(-17.3f, 33.1f);
+        x = -20.1f;
+        y = UnityEngine.Random.Range(-17.3f, 29.3f);
         z = -2.7f;
 
         return new Vector3(x, y, z);
     }
+
+    /*Quaternion rotacionizq()
+    {
+        float x, y, z;
+        x = 90;
+        y = 90;
+        z = 0;
+
+        return new Quaternion(x, y, z);
+
+    }*/
 
 }
