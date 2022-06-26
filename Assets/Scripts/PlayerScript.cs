@@ -74,7 +74,7 @@ public class PlayerScript : MonoBehaviour
 
 
         }
-        if (col.gameObject.name == "SpikesIzq(Clone)")
+        if (col.gameObject.name == "SpikesIzqVariant(Clone)")
         {
             transform.position = new Vector3(-1.45f, 7, -3);
 
@@ -83,7 +83,7 @@ public class PlayerScript : MonoBehaviour
   
 
         }
-        if (col.gameObject.name == "SpikesDer(Clone)")
+        if (col.gameObject.name == "SpikesDerVariant(Clone)")
         {
             transform.position = new Vector3(-1.45f, 7, -3);
 
@@ -99,13 +99,14 @@ public class PlayerScript : MonoBehaviour
 
             movementspeed = movementspeed + (movementspeed * -2);
 
-            //transform.eulerAngles = new Vector3(180, 0, 0);
+
 
             contador++;
 
             while (cantidad <= maximo)
             {
-                clon = Instantiate(SpikesDer, PositionDer(), Quaternion(90,90,0);
+                clon = Instantiate(SpikesDer, PositionDer(), Quaternion.identity);
+                clon.transform.eulerAngles = new Vector3(0, -90, 0);
                 cantidad++;
                 Destroy(clon, 4.5f);
             }
@@ -123,7 +124,7 @@ public class PlayerScript : MonoBehaviour
             movementspeed = movementspeed - (movementspeed * 2);
 
 
-            //transform.eulerAngles = new Vector3 (-180, 0, 0);
+
 
 
             contador++;
@@ -131,6 +132,7 @@ public class PlayerScript : MonoBehaviour
             while (cantidad <= maximo)
             {
                 clon2 = Instantiate(SpikesIzq, PositionIzq(), Quaternion.identity);
+                clon2.transform.eulerAngles = new Vector3(0, 90, 0);
                 cantidad++;
                 Destroy(clon2, 4.5f);
             }
@@ -145,7 +147,7 @@ public class PlayerScript : MonoBehaviour
         float x, y, z;
         x = 19.3f;
         y = UnityEngine.Random.Range(-17.3f, 29.3f);
-        z = -2.7f;
+        z = 2.3f;
 
         return new Vector3(x, y, z);
     }

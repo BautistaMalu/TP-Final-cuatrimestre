@@ -24,7 +24,7 @@ public class lifeandrestart : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
          {
             SceneManager.LoadScene("SampleScene");
-            Life += 100;
+            Life = 100;
             player.SetActive(true);
          }
 
