@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     GameObject clon2;
     public Text contadortext;
     public AudioClip Bonk;
+    public AudioClip Salto;
     AudioSource fuente;
     Time time;
     public Text TimeText;
@@ -37,7 +38,8 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
-
+            fuente.clip = Salto;
+            fuente.Play();
         }
 
         transform.Translate(0, movementspeed, 0);
@@ -110,7 +112,7 @@ public class PlayerScript : MonoBehaviour
                 cantidad++;
                 Destroy(clon, 4.5f);
             }
-
+            //gameObject.transform.eulerAngles = new Vector3(180, 0, 0);
             maximo++;
             cantidad = 1;
             fuente.clip = Bonk;
@@ -121,12 +123,7 @@ public class PlayerScript : MonoBehaviour
 
             transform.Translate(0, movementspeed, 0);
 
-            movementspeed = movementspeed - (movementspeed * 2);
-
-
-
-
-
+ 
             contador++;
 
             while (cantidad <= maximo)
@@ -136,8 +133,8 @@ public class PlayerScript : MonoBehaviour
                 cantidad++;
                 Destroy(clon2, 4.5f);
             }
+            //gameObject.transform.eulerAngles = new Vector3(180, 0, 0);
             cantidad = 1;
-
             fuente.clip = Bonk;
             fuente.Play();
         }
@@ -161,15 +158,5 @@ public class PlayerScript : MonoBehaviour
         return new Vector3(x, y, z);
     }
 
-    /*Quaternion rotacionizq()
-    {
-        float x, y, z;
-        x = 90;
-        y = 90;
-        z = 0;
-
-        return new Quaternion(x, y, z);
-
-    }*/
 
 }
